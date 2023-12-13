@@ -27,6 +27,26 @@ def test_encode(test_input, expected):
     '''Verify that strings given above match the expected results'''
     assert(mycrypt.encode(test_input)) == expected
 
+@pytest.mark.parametrize("test_input,expected", [
+    ("AAAAAAAAAA", "nnnnnnnnnn"),
+    ("BBBBBBBBBB", "oooooooooo"),
+    ("CCCCCCCCCC", "pppppppppp")
+])
+def test_encode_decode_repeated_characters(test_input, expected):
+    '''Test repeated characters'''
+    assert(mycrypt.encode(test_input)) == expected
+
+
+@pytest.mark.parametrize("test_input,expected", [
+    ("abcdefg", "NOPQRST"),
+    ("AbCdEfG", "nOpQrSt"),
+    ("1HellO3", "!uRYYb#"),
+    ("AaAaAa", "nNnNnN")
+])
+def test_encode_mixed_characters(test_input, expected):
+    '''Test combinations of lower and upper case letters'''
+    assert(mycrypt.encode(test_input)) == expected
+
 
 @pytest.mark.parametrize("test_input", [
     '123', '!"#','abc'])
