@@ -23,5 +23,6 @@ def encode(s):
             raise ValueError
     return crypted[0:origlen]
 
+
 def decode(s):
     return encode(s).lower()
